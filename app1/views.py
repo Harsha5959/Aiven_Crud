@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate
 from django.contrib import messages
 
 from app1.models import Employees
@@ -55,19 +54,20 @@ def update(request, id):
 def delete(request, id):
     employee = get_object_or_404(Employees, id=id)
 
+    # 🚨 Hardcoded credentials for delete
+    CORRECT_USERNAME = "Harsha"      # <-- change to whatever you like
+    CORRECT_PASSWORD = "12345"         # <-- change to whatever you like
+
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "")
 
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            # Credentials are correct → delete and redirect
+        if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
+            # ✅ Credentials match → delete and redirect
             employee.delete()
             messages.success(request, "Employee deleted successfully.")
             return redirect('home')
         else:
-            # Invalid username/password
             messages.error(request, "Invalid username or password. Please try again.")
 
     # GET request → show the authentication + confirmation page
