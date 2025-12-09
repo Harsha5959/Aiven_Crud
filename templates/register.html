@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Registration</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
+<head>
+    <meta charset="utf-8">
+    <title>Register Employee | Aiven CRUD</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="card card--narrow">
+        <div class="card-header">
+            <div>
+                <h1 class="card-title">Register Employee</h1>
+                <p class="card-subtitle">Fill in the details to create a new employee record.</p>
+            </div>
+        </div>
 
-            <button>Submit</button>
+        <div class="form-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
 
-        </form>
-        <a href = "{% url "home" %}">Home</a>
-    </body>
+                <div class="form-footer">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+                    <button class="btn btn-primary" type="submit">Save Employee</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="back-link">
+            <p>Tip: Make sure email and mobile number are valid before saving.</p>
+        </div>
+    </div>
+</div>
+</body>
 </html>

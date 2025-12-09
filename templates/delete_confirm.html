@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete | Aiven CRUD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="card card--narrow">
+        <div class="card-header">
+            <div>
+                <h1 class="card-title">Confirm Deletion</h1>
+                <p class="card-subtitle">
+                    To delete this employee, please confirm your username and password.
+                </p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-row">
+                <span class="info-label">Name:</span> {{ employee.Employee_name }}
+            </div>
+            <div class="info-box-row">
+                <span class="info-label">Email:</span> {{ employee.Employee_email }}
+            </div>
+            <div class="info-box-row">
+                <span class="info-label">Age:</span> {{ employee.Employee_age }}
+            </div>
+        </div>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-inline-group">
+                <label for="id_username">Username</label>
+                <input type="text" name="username" id="id_username" required>
+            </div>
+
+            <div class="form-inline-group">
+                <label for="id_password">Password</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+
+            <div class="form-footer">
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete Permanently</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

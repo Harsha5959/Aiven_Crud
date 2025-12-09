@@ -4,6 +4,6 @@ from django.contrib import admin
 from app1.models import Employees
 
 class employees_Admin(admin.ModelAdmin):
-    list_display = ['Employee_name','Employee_age','Employee_email','Employee_mobile','Employee_Department','Employee_Join_Date']
+    list_display = ['Employee_name','Employee_age','Employee_email']
 
 admin.site.register(Employees,employees_Admin)

@@ -73,24 +73,25 @@ WSGI_APPLICATION = 'Crud_Aiven.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+import os
 
-import os 
-if os.environ.get("RENDER"): 
-    DATABASES = { 
-        "default": { 
-            "ENGINE": "django.db.backends.mysql", 
-            "NAME": os.environ.get("MYSQLDATABASE"), 
-            "USER": os.environ.get("MYSQLUSER"), 
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
-            "HOST": os.environ.get("MYSQLHOST"), 
-            "PORT": os.environ.get("MYSQLPORT", "13155"), 
-        } 
+if os.environ.get("RENDER"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQLDATABASE"),
+            "USER": os.environ.get("MYSQLUSER"),
+            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
+            "HOST": os.environ.get("MYSQLHOST"),
+            "PORT": os.environ.get("MYSQLPORT", "13155"),
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / 'db.sqlite3',
+        }
     }
 
 
@@ -129,3 +130,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Where your static files (CSS, JS, images) will be during development
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# Where static files will be collected for deployment
+STATIC_ROOT = BASE_DIR / "staticfiles"

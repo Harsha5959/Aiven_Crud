@@ -3,37 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Employees | Aiven CRUD</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <table border="2">
-        <tr>
-            <th>Employee_name</th>
-            <th>Employee_age</th>
-            <th>Employee_email</th>
-            <th>Employee_mobile</th>
-            <th>Employee_Department</th>
-            <th>Employee_Join_Date</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        {% for x in data %}
-        <tr>
-            <td>{{x.Employee_name}}</td>
-            <td>{{x.Employee_age}}</td>
-            <td>{{x.Employee_email}}</td>
-            <td>{{x.Employee_mobile}}</td>
-            <td>{{x.Employee_Department}}</td>
-            <td>{{x.Employee_Join_Date}}</td>
-            <td>
-                <a href="{% url 'edit' x.id %}">Edit</a>
-            </td>
-            <td>
-                <a href="{% url 'delete' x.id %}">Delete</a> 
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{% url 'register' %}">ADD</a>
+<div class="page-shell">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h1 class="card-title">Employee Directory</h1>
+                <p class="card-subtitle">Manage all employee records from a single, clean dashboard.</p>
+            </div>
+            <a href="{% url 'register' %}" class="btn btn-primary">+ Add Employee</a>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table-custom">
+                <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Department</th>
+                    <th>Join Date</th>
+                    <th style="width: 150px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for x in data %}
+                    <tr>
+                        <td>{{ x.Employee_name }}</td>
+                        <td>{{ x.Employee_age }}</td>
+                        <td>{{ x.Employee_email }}</td>
+                        <td>{{ x.Employee_mobile }}</td>
+                        <td>{{ x.Employee_Department }}</td>
+                        <td>{{ x.Employee_Join_Date }}</td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="{% url 'edit' x.id %}" class="btn btn-warning">Edit</a>
+                                <a href="{% url 'delete' x.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7">No employees yet. Click “Add Employee” to create one.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

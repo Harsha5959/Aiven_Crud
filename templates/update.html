@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>Edit Employee | Aiven CRUD</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update</button>
-    </form>
+<div class="page-shell">
+    <div class="card card--narrow">
+        <div class="card-header">
+            <div>
+                <h1 class="card-title">Edit Employee</h1>
+                <p class="card-subtitle">Update the details and click “Save Changes”.</p>
+            </div>
+        </div>
+
+        <div class="form-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="form-footer">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                    <button class="btn btn-warning" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

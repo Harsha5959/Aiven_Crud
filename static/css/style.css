@@ -1,0 +1,282 @@
+/* ==============================
+   Base layout
+   ============================== */
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f7fb;
+    color: #1f2933;
+}
+
+/* Page shell to center content and add top spacing */
+.page-shell {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px;
+}
+
+/* Card layout used everywhere (home, forms, delete) */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    width: 100%;
+    max-width: 1100px;
+}
+
+.card--narrow {
+    max-width: 520px;
+}
+
+/* Card header (title + button row) */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.card-subtitle {
+    margin: 0;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* ==============================
+   Buttons
+   ============================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secondary {
+    background: #e0e7ff;
+    color: #1f2a7c;
+}
+
+.btn-warning {
+    background: #fbbf24;
+    color: #1f2937;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #2563eb;
+    padding-inline: 0;
+    box-shadow: none;
+}
+
+.btn:hover {
+    filter: brightness(0.97);
+}
+
+/* ==============================
+   Table styling (Home page)
+   ============================== */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table-custom thead {
+    background: #e0e7ff;
+}
+
+.table-custom th,
+.table-custom td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-custom th {
+    font-weight: 600;
+    color: #111827;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background: #f3f4ff;
+}
+
+.table-custom tbody tr:hover {
+    background: #e5edff;
+}
+
+/* Action buttons inside table */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ==============================
+   Forms (Register & Update)
+   ============================== */
+.form-body {
+    margin-top: 8px;
+}
+
+.form-body form p {
+    margin: 0 0 12px 0;
+}
+
+/* for default Django {{ form.as_p }} structure */
+.form-body form p label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-body form p input,
+.form-body form p select,
+.form-body form p textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+.form-body form p input:focus,
+.form-body form p select:focus,
+.form-body form p textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Back link style */
+.back-link {
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.back-link a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+   Delete confirm – shared bits
+   ============================== */
+.info-box {
+    background: #f0f4ff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.info-box-row {
+    margin-bottom: 4px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Messages */
+.messages {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.messages .error {
+    color: #b91c1c;
+}
+
+.messages .success {
+    color: #15803d;
+}
+
+/* Small form groups (used in delete confirm) */
+.form-inline-group {
+    margin-bottom: 12px;
+}
+
+.form-inline-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-inline-group input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+.form-inline-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
