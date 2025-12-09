@@ -8,5 +8,3 @@ class Employees(models.Model):
     Employee_Department = models.CharField(max_length=50)
     Employee_Join_Date = models.DateField()
 
-    class Meta:
-        db_table = 'crud_employees' 
